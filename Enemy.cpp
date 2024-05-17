@@ -9,8 +9,8 @@ Enemy::Enemy(QGraphicsItem *parent): QObject(), Tank(parent) {
     timer->start(1000);
 }
 void Enemy::autoMove() {
-    // Implementar movimientos automáticos y disparos del enemigo aquí
-    // Esto es solo un ejemplo, deberás implementar una IA adecuada
+    // Aca se implementa movimientos automáticos y disparos del enemigo aquí
+    // Esto es solo un ejemplo,
     setPos(x(), y() + 10);
     if (pos().y() > scene()->height()) {
         scene()->removeItem(this);

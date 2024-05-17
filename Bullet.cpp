@@ -12,7 +12,7 @@ Bullet::Bullet(QGraphicsItem *parent): QGraphicsEllipseItem(parent) {
 }
 
 void Bullet::move() {
-    // Mueve el proyectil hacia arriba
+    // Se mueve el proyectil hacia arriba
     setPos(x(), y() - 10);
     if (pos().y() < 0) {
         scene()->removeItem(this);
