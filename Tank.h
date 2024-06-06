@@ -1,10 +1,10 @@
 #ifndef TANK_H
 #define TANK_H
 
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 
-class Tank : public QGraphicsRectItem {
+class Tank : public QGraphicsPixmapItem {
 public:
     Tank(QGraphicsItem *parent=0);
     void keyPressEvent(QKeyEvent *event);

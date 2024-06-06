@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Tanque_Enemigo.png</file>
+        <file>images/Tanque.png</file>
+        <file>images/Proyectil_Tanque.png</file>
+        <file>images/Fondo_Tanque.png</file>
+        <file>images/GameOver_Tanque.png</file>
+        <file>images/Explosion_Tanque.png</file>
+    </qresource>
+</RCC>

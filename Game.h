@@ -9,13 +9,22 @@
 #include "Bullet.h"
 
 class Game : public QGraphicsView {
-public:
-    Game(QWidget *parent = 0);
+    Q_OBJECT
 
+public:
+    Game(QWidget *parent = nullptr);
+    void displayGameOver();
+    void restartGame();
+
+private:
     QGraphicsScene *scene;
     Tank *playerTank;
-    QList<Enemy *> enemies;
-    QList<Bullet *> bullets;
+    QList<Enemy*> enemies;
+    QList<Bullet*> bullets;
+    QTimer *enemyTimer;
+
+public slots:
+    void spawnEnemy(); // Declarar la función spawnEnemy como un slot
 };
 
 #endif // GAME_H

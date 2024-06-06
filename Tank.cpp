@@ -1,37 +1,28 @@
 #include "Tank.h"
-#include "Bullet.h"
 #include <QGraphicsScene>
-#include <QGraphicsItem>
+#include <QKeyEvent>
+#include "Bullet.h"
 
-Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent) {
-    // Inicializa el tanque aquí
-    setRect(0,0,50,50);
+Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent) {
+    QPixmap tankPixmap(":/images/Tanque.png");
+    tankPixmap = tankPixmap.scaled(50, 50, Qt::KeepAspectRatio); // Escalar la imagen
+    setPixmap(tankPixmap);
 }
 
 void Tank::keyPressEvent(QKeyEvent *event) {
-    int stepSize = 10;
-    switch (event->key()) {
-        case Qt::Key_Left:
-            if (pos().x() > 0) setPos(x() - stepSize, y());
-            break;
-        case Qt::Key_Right:
-            if (pos().x() + rect().width() < scene()->width()) setPos(x() + stepSize, y());
-            break;
-        case Qt::Key_Up:
-            if (pos().y() > 0) setPos(x(), y() - stepSize);
-            break;
-        case Qt::Key_Down:
-            if (pos().y() + rect().height() < scene()->height()) setPos(x(), y() + stepSize);
-            break;
-        case Qt::Key_Space:
-            shoot();
-            break;
+    if (event->key() == Qt::Key_Left) {
+        if (pos().x() > 0)
+            setPos(x() - 10, y());
+    } else if (event->key() == Qt::Key_Right) {
+        if (pos().x() + pixmap().width() < scene()->width())
+            setPos(x() + 10, y());
+    } else if (event->key() == Qt::Key_Space) {
+        shoot();
     }
 }
 
 void Tank::shoot() {
-    // Implementar disparo
     Bullet *bullet = new Bullet();
-    bullet->setPos(x(), y());
+    bullet->setPos(x() + pixmap().width()/2 - bullet->pixmap().width()/2, y());
     scene()->addItem(bullet);
 }
